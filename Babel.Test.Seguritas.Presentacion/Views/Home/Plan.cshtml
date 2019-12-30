@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Plan";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2 class="mb-4">Planes</h2>
+
+<!--Error-->
+<div class="alert alert-danger" data-bind="visible: error"><div data-bind="text: error"></div></div>
+
+<!--Registro-->
+<div class="card mx-auto mb-5">
+    <div class="card-header">Registrar nuevo plan</div>
+    <div class="card-body">
+        <form class="form-inline" data-bind="submit: addPlan">
+            <div class="form-group col-lg-4 p-0 pr-1" data-bind="with: nuevoPlan">
+                <label class="d-none" for="inputDescripcion">Descripcion</label>
+                <input type="text" id="inputDescripcion" class="form-control w-100" placeholder="Descripcion" required="required" autofocus="autofocus" data-bind="value:Descripcion">
+            </div>
+            <div class="form-group col-lg-4 p-0 pl-1">
+                <label for="inputPlan" class="d-none control-label">Cliente</label>
+                <select class="form-control w-100" data-bind="options:clientes, optionsText: 'Nombre', value: nuevoPlan.Cliente"></select>
+            </div>
+            <div class="col-lg-1"></div>
+            <button type="submit" class="btn btn-primary col-lg-3">Registrar</button>
+        </form>
+    </div>
+</div>
+
+<!--Tabla-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Listado de Planes
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTablePlan" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Descripcion</th>
+                        <th>Fecha de creación</th>
+                        <th>Cliente</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: planes">
+                    <tr>
+                        <td><span data-bind="text: Id"></span></td>
+                        <td><span data-bind="text: Descripcion"></span></td>
+                        <td><span data-bind="text: FechaCreacion"></span></td>
+                        <td><span data-bind="text: Cliente"></span></td>
+                        <td>
+                            <a href="#" data-bind="click: $parent.popDeletePlan">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!--Modal-->
+<div class="modal fade" id="planModal" tabindex="-1" role="dialog" aria-labelledby="planModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="planModalLabel">Plan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" data-bind="text: mensajeEliminar"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bind="click: deletePlan">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/plan")

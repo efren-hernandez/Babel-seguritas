@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Babel.Test.Seguritas.Presentacion", "Babel.Test.Seguritas.Presentacion\Babel.Test.Seguritas.Presentacion.csproj", "{6FDF1673-06FF-42DA-9D5B-F39654C45BFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FDF1673-06FF-42DA-9D5B-F39654C45BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FDF1673-06FF-42DA-9D5B-F39654C45BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FDF1673-06FF-42DA-9D5B-F39654C45BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FDF1673-06FF-42DA-9D5B-F39654C45BFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {505EC4B3-45C9-41F0-BB61-7C5F70523074}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://efrenhernandez.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Babel.Test.Seguritas.Presentacion\\Babel.Test.Seguritas.Presentacion.csproj
+		SccProjectName1 = Babel.Test.Seguritas.Presentacion
+		SccLocalPath1 = Babel.Test.Seguritas.Presentacion
+	EndGlobalSection
+EndGlobal
