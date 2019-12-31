@@ -2,16 +2,26 @@
     var self = this;
     self.clientes = ko.observableArray();
     self.error = ko.observable();
+    self.errorActualizar = ko.observable();
     self.detalle = ko.observable();
     self.nuevoCliente = {
         Nombre: ko.observable()
     }
+    self.actualizaCliente = {
+        Nombre: ko.observable()
+    }
     self.mensajeEliminar = ko.observable();
+    self.mensajeActualizar = ko.observable();
 
     var itemEliminar;
+    var itemActualizar = {
+        Id: 0,
+        Nombre: ''
+    }
 
     function ajaxHelper(uri, method, data) {
         self.error('');
+        self.errorActualizar('');
         return $.ajax({
             type: method,
             url: uri,
@@ -20,7 +30,12 @@
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.responseJSON != null) {
-                self.error(jqXHR.responseJSON.Message);
+                if (method == 'PUT') {
+                    self.errorActualizar(jqXHR.responseJSON.Message);
+                }
+                else {
+                    self.error(jqXHR.responseJSON.Message);
+                }
             }
         });
     }
@@ -47,6 +62,25 @@
 
         ajaxHelper(uriCliente, 'POST', cliente).done(function (item) {
             self.nuevoCliente.Nombre('');
+            window.location.reload();
+        });
+    }
+
+    self.popActualizarCliente = function (item) {
+        itemActualizar = item;
+        self.mensajeActualizar("Se va a actualizar al cliente " + item.Nombre);
+        self.actualizaCliente.Nombre(item.Nombre);
+        $('#clienteModalActualizar').modal('show');
+    }
+
+    self.actualizarCliente = function (item) {
+        var cliente = {
+            Id: itemActualizar.Id,
+            Nombre: self.actualizaCliente.Nombre()
+        }
+
+        ajaxHelper(uriCliente + itemActualizar.Id, 'PUT', cliente).done(function (item) {
+            self.actualizaCliente.Nombre('');
             window.location.reload();
         });
     }

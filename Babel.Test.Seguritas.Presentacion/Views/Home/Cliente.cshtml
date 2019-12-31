@@ -48,6 +48,8 @@
                         <td><span data-bind="text: FechaCreacion"></span></td>
                         <td>
                             <a href="#" data-bind="click: $parent.popDeleteCliente">Eliminar</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#" data-bind="click: $parent.popActualizarCliente">Actualizar</a>
                         </td>
                     </tr>
                 </tbody>
@@ -56,7 +58,7 @@
     </div>
 </div>
 
-<!--Modal-->
+<!--Modal Eliminar-->
 <div class="modal fade" id="clienteModal" tabindex="-1" role="dialog" aria-labelledby="clienteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -72,6 +74,34 @@
                 <button type="button" class="btn btn-primary" data-bind="click: deleteCliente">Eliminar</button>
             </div>
         </div>
+    </div>
+</div>
+
+<!--Modal Actualizar-->
+<div class="modal fade" id="clienteModalActualizar" tabindex="-1" role="dialog" aria-labelledby="clienteModalLabelActualizar" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form class="form-inline" data-bind="submit: actualizarCliente">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="clienteModalLabelActualizar">Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" data-bind="visible: errorActualizar"><div data-bind="text: errorActualizar"></div></div>
+                    <div class="mb-3" data-bind="text: mensajeActualizar"></div>
+                    <div class="form-group mb-4" data-bind="with: actualizaCliente">
+                        <label class="d-none" for="inputNombreActualiza">Nombre</label>
+                        <input type="text" id="inputNombreActualiza" class="form-control w-100" placeholder="Nombre" required="required" autofocus="autofocus" data-bind="value:Nombre">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
